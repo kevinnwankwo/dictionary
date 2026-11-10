@@ -15,6 +15,7 @@ Python Target Version: Python 3.x or later
 Dependencies: Implemented purely using native standard modules (`time` and `sys`). No external pip dependencies are required.
 
 Installation & Setup
+
 Copy the script code and save it to your machine as `merger.py`.
 Launch your preferred command line terminal.
 
