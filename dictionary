@@ -1,0 +1,48 @@
+import time # Import standard library tools necessary for triggering system delays/pauses
+import sys # Import system level processes needed to handle script exits and standard console buffer dumps
+
+list1 = []
+list2 = []
+
+print("--- Populating List 1 (Keys - Must be Unique) ---")
+while True:
+    user_input = input("Enter a unique item for the first list: ").strip()
+    
+    # Check if the item already exists in list1
+    if user_input in list1:
+        print(f"  Warning: '{user_input}' already exists! Keys must be unique. Try another item.")
+        continue # Skip the rest of the loop's code (to prevent the item from being added) and jumps straight back to the top of the while loop to ask you for a new input.
+        
+    list1.append(user_input)
+    
+    
+    done = input("Are you through? (yes/no): ").strip().lower()
+    if done == 'yes':
+        break
+
+print("\n--- Populating List 2 (Values) ---")
+while True:
+    user_input = input("Enter an item for the second list: ").strip()
+    list2.append(user_input)
+    
+    done = input("Are you through? (yes/no): ").strip().lower()
+    if done == 'yes':
+        break
+
+print("\n--- Checking Lists ---")
+if len(list1) != len(list2):
+    print("Length of lists don't match. Try again.")
+    sys.exit()
+else:
+    print("Lengths match. Proceeding", end="") # Display success progress message. Use end="" to tell the console window not to jump lines so items continue directly side by side
+    for _ in range(3): # Configure a 3-count loop sequence block to execute step tracking indicators
+        time.sleep(1) # Halt the environment's timeline processor for exactly 1 second
+        print(".", end="")
+        sys.stdout.flush() # Force the terminal screen to redraw instantly, bypassing system buffering delays to ensure periods appear right on cue.
+    print()
+
+# Safely merge lists into a dictionary using the zip utility
+result_dict = dict(zip(list1, list2))
+
+print("\nResulting Dictionary:")
+print(result_dict)
